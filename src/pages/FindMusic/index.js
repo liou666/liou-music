@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-19 16:36:07
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-25 20:22:45
+ * @LastEditTime: 2021-12-25 20:52:17
  */
 import { memo, useState } from "react";
 import { Outlet, NavLink } from "react-router-dom";
@@ -25,7 +25,7 @@ export default memo(() => {
                     <ul className="sub-nav-wrap">
                         {dicoverMenu.map((item, index) => {
                             return (
-                                <li onClick={() => setCurrentIndex(index)} className="sub-item">
+                                <li key={item.title} onClick={() => setCurrentIndex(index)} className="sub-item">
                                     <NavLink to={item.link}>
                                         <span className={currentIndex === index ? 'sub-item-active' : 'sub-item-title'}>{item.title}</span>
                                     </NavLink>
