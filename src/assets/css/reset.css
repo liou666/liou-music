@@ -1,3 +1,7 @@
 /* ~符号表示从node_modules中导入 */
 @import "~normalize.css";
 @import "~antd/dist/antd.css";
+
+li {
+    list-style: none;
+}
