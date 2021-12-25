@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+/*
+ * @Description: 
+ * @Autor: Liou
+ * @Date: 2021-12-19 15:20:07
+ * @LastEditors: Liou
+ * @LastEditTime: 2021-12-25 10:59:12
+ */
+import { memo, Suspense } from "react"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Header from "components/Header";
+import Footer from "components/Footer";
 
-export default App;
+import RouteView from "./router";
+
+
+
+export default memo(function App() {
+    return (
+        <>
+            <Header />
+            <Suspense fallback={<span>loading</span>}>
+                <RouteView />
+            </Suspense>
+            <Footer />
+        </>
+    )
+
+})
+
+
