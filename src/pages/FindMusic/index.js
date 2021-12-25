@@ -3,13 +3,39 @@
  * @Autor: Liou
  * @Date: 2021-12-19 16:36:07
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-24 20:01:35
+ * @LastEditTime: 2021-12-25 20:22:45
  */
-import { memo } from "react";
-import { Outlet } from "react-router-dom";
+import { memo, useState } from "react";
+import { Outlet, NavLink } from "react-router-dom";
+
+import { dicoverMenu } from "@/common/localData"
+
+import { DiscoverSubNavWrap } from "./style"
+
+
+
+
 
 export default memo(() => {
+    const [currentIndex, setCurrentIndex] = useState(0)
     return (
-        <Outlet />
+        <>
+            <DiscoverSubNavWrap>
+                <div className="wrap">
+                    <ul className="sub-nav-wrap">
+                        {dicoverMenu.map((item, index) => {
+                            return (
+                                <li onClick={() => setCurrentIndex(index)} className="sub-item">
+                                    <NavLink to={item.link}>
+                                        <span className={currentIndex === index ? 'sub-item-active' : 'sub-item-title'}>{item.title}</span>
+                                    </NavLink>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+            </DiscoverSubNavWrap>
+            <Outlet />
+        </>
     )
 })
