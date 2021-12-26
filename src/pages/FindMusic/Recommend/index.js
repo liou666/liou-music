@@ -3,30 +3,21 @@
  * @Autor: Liou
  * @Date: 2021-12-19 15:50:51
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-25 15:47:14
+ * @LastEditTime: 2021-12-26 00:35:30
  */
 
 import { memo, useEffect } from "react";
 
-import { useSelector, useDispatch, shallowEqual } from "react-redux"
 
-import { getTopBannerAction } from "./store/actionCreator"
 
+import TopBanner from "./components/TopBanner"
 
 export default memo(() => {
-    const { topBanners } = useSelector(state => ({
-        topBanners: state.recommend.topBanners
-    }), shallowEqual);
-    const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(getTopBannerAction())
-    }, [dispatch])
 
     return (
         <>
-            <h1>home recommend page</h1>
-            <span>{topBanners.length}</span>
+            <TopBanner ></TopBanner>
         </>
     )
 })
