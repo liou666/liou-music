@@ -20,7 +20,7 @@ export function getHotRecommends(limit) {
 }
 
 export function getNewAlbums(limit) {
-    return api.get("/top/album", { limit })
+    return api.get("album/newest", { limit })
 }
 
 export function getTopList(idx) {
