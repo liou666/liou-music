@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-25 12:38:17
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-25 13:26:05
+ * @LastEditTime: 2021-12-29 00:05:07
  */
 import api from "@/api"
 
@@ -23,6 +23,6 @@ export function getNewAlbums(limit) {
     return api.get("album/newest", { limit })
 }
 
-export function getTopList(idx) {
-    return api.get("/top/list", { idx })
+export function getTopList(id) {
+    return api.get("/playlist/detail", { id })
 }

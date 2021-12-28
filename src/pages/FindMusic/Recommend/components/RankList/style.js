@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-28 01:05:03
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-28 01:08:09
+ * @LastEditTime: 2021-12-29 01:01:15
  */
 import styled from "styled-components"
 
@@ -19,7 +19,9 @@ export const ComponentWrap = styled.div`
             width: 80px;
             height: 80px;
             margin-left: 20px;
-            background-color: pink;
+            img{
+                width: 100%;
+            }
         }
         .right{
             height: 80px;
@@ -46,26 +48,33 @@ export const ComponentWrap = styled.div`
             }
             &:hover{
                 .option{
+                    display: flex;
                     z-index:2;
-               
+                    width: 82px;
             }
             }
             .rank-number{
                 width: 35px;
+                font-family: Arial, Helvetica, sans-serif;
                 text-align: center;
+                font-size: 16px;
             }
-            .sone-name{
+            .active{
+                color: red;
+            }
+            .song-name{
                 flex: 1;
                 overflow: hidden;
                 text-overflow:ellipsis;
                 white-space: nowrap;
+                padding-right: 8px;
             }
             .option{
                 z-index:-1;
                 position: relative;
-                display: flex;
+                /* display: none; */
                 align-items: center;
-                width: 82px;
+                width: 0px;
                margin-left: auto;
             }
         }
@@ -101,5 +110,6 @@ export const ComponentWrap = styled.div`
     }
 `
 export const RankWrap = styled.div`
-display: flex;
+    display: flex;
+    margin-top: 20px;
 `

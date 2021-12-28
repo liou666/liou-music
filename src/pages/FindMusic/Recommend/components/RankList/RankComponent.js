@@ -3,25 +3,25 @@
  * @Autor: Liou
  * @Date: 2021-12-27 23:46:41
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-28 01:08:49
+ * @LastEditTime: 2021-12-29 01:05:48
  */
 import { memo, useEffect, useState, useCallback, useRef } from "react";
-import { useSelector, useDispatch, shallowEqual } from "react-redux"
 
 import { ComponentWrap } from "./style"
 
 
-const mockData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export default memo((props) => {
 
-    const { width } = props
+    const { width, info: { id, name, coverImgUrl, tracks = [] } } = props;
     return (
         <ComponentWrap width={width}>
             <header>
-                <div className="header-image">123</div>
+                <div className="header-image">
+                    <img src={coverImgUrl}></img>
+                </div>
                 <div className="right">
-                    <span>飙升榜</span>
+                    <span>{name}</span>
                     <div className="btn-info">
                         <i className="btn redio-btn" />
                         <i className="btn favor" />
@@ -29,15 +29,14 @@ export default memo((props) => {
                 </div>
             </header>
             <ul className="list-wrap">
-                {mockData.map(x => {
+                {tracks.slice(0, 10).map((item, index) => {
                     return (
-                        <li key={x} className="list-item">
-                            <span className="rank-number">{x}</span>
-                            <span className="song-name">{x}</span>
+                        <li key={item.id} className="list-item">
+                            <span className={index >= 3 ? "rank-number" : 'rank-number active'}>{index + 1}</span>
+                            <span className="song-name">{item.name}</span>
                             <div className="option">
                                 <i className="btn redio-btn" />
                                 <i className="btn addto" />
-
                                 <i className="btn favor" />
                             </div>
                         </li>
