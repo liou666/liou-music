@@ -4,7 +4,9 @@ import {
     getTopBanners,
     getHotRecommends,
     getNewAlbums,
-    getTopList
+    getTopList,
+    getNewSonger,
+    getHotHost
 } from '@/services/recommend';
 
 const changeTopBannerAction = (res) => ({
@@ -33,6 +35,16 @@ const changeNewRanksAction = (res) => ({
 const changeOriginalRanksAction = (res) => ({
     type: actionTypes.CHANGE_ORIGINAL_RANKS,
     originalRanks: res.playlist
+});
+
+const changeHotHostAction = (res) => ({
+    type: actionTypes.CHANGE_HOT_HOST,
+    hotHost: res.djRadios
+});
+
+const changeNewSongerAction = (res) => ({
+    type: actionTypes.CHANGE_NEW_SONGER,
+    newSonger: res.artists
 });
 
 export const getTopBannerAction = () => {
@@ -77,3 +89,17 @@ export const getTopListAction = (id, type) => {
 };
 
 
+export const getHotHostAction = () => {
+    return dispatch => {
+        getHotHost().then(res => {
+            dispatch(changeHotHostAction(res));
+        })
+    }
+}
+export const getNewSongerAction = (limit) => {
+    return dispatch => {
+        getNewSonger(limit).then(res => {
+            dispatch(changeNewSongerAction(res));
+        })
+    }
+};

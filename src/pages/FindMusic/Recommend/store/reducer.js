@@ -7,7 +7,10 @@ const defaultState = {
 
   originalRanks: {},
   newRanks: {},
-  upRanks: {}
+  upRanks: {},
+
+  newSonger: [],
+  hotHost: []
 }
 
 
@@ -26,6 +29,11 @@ export function reducer(state = defaultState, action) {
       return { ...state, originalRanks: action.originalRanks }
     case actionTypes.CHANGE_UP_RANKS:
       return { ...state, upRanks: action.upRanks }
+
+    case actionTypes.CHANGE_HOT_HOST:
+      return { ...state, hotHost: action.hotHost }
+    case actionTypes.CHANGE_NEW_SONGER:
+      return { ...state, newSonger: action.newSonger }
     default:
       return state
   }
