@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-26 13:52:21
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-08 15:19:36
+ * @LastEditTime: 2022-01-09 00:33:58
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -30,9 +30,10 @@ export default memo(() => {
     const [isChangingSlide, setIsChangingSlide] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false)
 
-    const { currentSong, sequence } = useSelector(state => ({
+    const { currentSong, sequence, songList } = useSelector(state => ({
         currentSong: state.player.currentSong,
         sequence: state.player.sequence,
+        songList: state.player.songList,
     }), shallowEqual)
 
     const dispatch = useDispatch()
@@ -148,7 +149,7 @@ export default memo(() => {
                     <div className="right playbar_sprite">
                         <button className="playbar_sprite btn volume"></button>
                         <button onClick={() => changeSequence()} className=" playbar_sprite btn loop"></button>
-                        <button className="playbar_sprite btn playlist"></button>
+                        <button className="playbar_sprite btn playlist">{songList?.length}</button>
                     </div>
 
                 </div>

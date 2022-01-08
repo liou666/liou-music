@@ -3,17 +3,26 @@
  * @Autor: Liou
  * @Date: 2021-12-27 23:46:41
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-29 01:05:48
+ * @LastEditTime: 2022-01-08 17:19:37
  */
 import { memo, useEffect, useState, useCallback, useRef } from "react";
+import { useSelector, useDispatch, shallowEqual } from "react-redux"
 
 import { ComponentWrap } from "./style"
+
+import { getSongListAction, addSongFromListAction } from "../../../../../components/PlayerBar/store/actionCreator"
 
 
 
 export default memo((props) => {
 
     const { width, info: { id, name, coverImgUrl, tracks = [] } } = props;
+
+
+    const dispatch = useDispatch()
+
+
+
     return (
         <ComponentWrap width={width}>
             <header>
@@ -23,7 +32,7 @@ export default memo((props) => {
                 <div className="right">
                     <span>{name}</span>
                     <div className="btn-info">
-                        <i className="btn redio-btn" />
+                        <i onClick={() => { dispatch(getSongListAction(id)) }} className="btn redio-btn" />
                         <i className="btn favor" />
                     </div>
                 </div>
@@ -35,7 +44,7 @@ export default memo((props) => {
                             <span className={index >= 3 ? "rank-number" : 'rank-number active'}>{index + 1}</span>
                             <span className="song-name">{item.name}</span>
                             <div className="option">
-                                <i className="btn redio-btn" />
+                                <i onClick={() => { dispatch(addSongFromListAction(item.id)) }} className="btn redio-btn" />
                                 <i className="btn addto" />
                                 <i className="btn favor" />
                             </div>

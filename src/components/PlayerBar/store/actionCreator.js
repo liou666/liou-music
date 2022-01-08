@@ -50,13 +50,23 @@ export const getSongListAction = (id) => {
 //添加歌曲到播放列表
 export const addSongFromListAction = (id) => {
     return (dispatch, getState) => {
-        const { player: { songList } } = getState()
-        getSongDetail(id).then(res => {
-            const newSongList = [...songList, res.songs[0]]
-            dispatch(changeSongListAction(newSongList))
-            dispatch(changeCurrentIndexAction(newSongList.length - 1))
-            dispatch(changeCurrentSongAction(res.songs[0]))
-        })
+        const { player: { songList } } = getState();
+
+        const index = songList.findIndex(x => x.id === id)
+        
+        if (index > 0) {
+            dispatch(changeCurrentIndexAction(index))
+            dispatch(changeCurrentSongAction(songList[index]))
+        } else {
+            getSongDetail(id).then(res => {
+                const newSongList = [...songList, res.songs[0]]
+                dispatch(changeSongListAction(newSongList))
+                dispatch(changeCurrentIndexAction(newSongList.length - 1))
+                dispatch(changeCurrentSongAction(res.songs[0]))
+            })
+        }
+
+
     }
 }
 
