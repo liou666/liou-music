@@ -11,6 +11,10 @@ export function getSongDetail(ids) {
     return api.get(`/song/detail`, { ids })
 }
 
+export function getSongListAll(id, limit = 10) {
+    return api.get(`/playlist/track/all`, { id, limit })
+}
+
 export function getSongUrl(id) {
     return api.get(`/song/url`, { id })
 }

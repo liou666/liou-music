@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2022-01-05 00:06:56
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-05 00:42:13
+ * @LastEditTime: 2022-01-08 10:51:09
  */
 import styled from "styled-components"
 
@@ -154,7 +154,7 @@ export const StyleWrap = styled.div`
 
         .playlist {
           width: 59px;
-          background-position: -42px -68px;
+          background-position: -42px -70px;
         }
         
         }
