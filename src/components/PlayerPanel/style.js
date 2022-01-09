@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2022-01-09 16:02:38
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 21:51:12
+ * @LastEditTime: 2022-01-09 23:35:20
  */
 
 import styled from "styled-components"
@@ -67,7 +67,7 @@ export const StyleWrapper = styled.div`
     .listbd{  
         display: flex;
 
-        width: 100%;
+        width: 984px;
         height: 260px;
         overflow: hidden;
         background: url(${require("@/assets/img/playpanel_bg.png")}) repeat-y   -1014px 0;

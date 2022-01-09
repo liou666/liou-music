@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2022-01-09 01:22:04
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 21:40:46
+ * @LastEditTime: 2022-01-09 22:55:42
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -17,9 +17,12 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux"
 // } from "/store/actionCreator"
 
 import SongListPanel from "../SongListPanel"
+import LyricPanel from "../LyricPanel"
 
 import { StyleWrapper } from "./style"
 import { Divider } from 'antd';
+
+import { parseLyric } from "../../utils/index"
 
 
 
@@ -59,7 +62,7 @@ export default memo(function PlayerPanel() {
                     <SongListPanel songList={songList} currentSongIndex={currentSongIndex} />
                 </div>
                 <div className="lyric-panel">
-                    2
+                    <LyricPanel lyric={parseLyric(currentLyric)} />
                 </div>
             </div>
 
