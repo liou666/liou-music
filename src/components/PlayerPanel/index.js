@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2022-01-09 01:22:04
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 19:12:02
+ * @LastEditTime: 2022-01-09 21:40:46
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -24,11 +24,11 @@ import { Divider } from 'antd';
 
 
 export default memo(function PlayerPanel() {
-    const { songList, currentLyric, currentSongIndex } = useSelector(state => ({
+    const { songList, currentLyric, currentSongIndex, currentSong } = useSelector(state => ({
         songList: state.player.songList,
         currentLyric: state.player.currentLyric,
         currentSongIndex: state.player.currentSongIndex,
-
+        currentSong: state.player.currentSong
     }), shallowEqual)
 
     // const dispatch = useDispatch()
@@ -36,20 +36,20 @@ export default memo(function PlayerPanel() {
     return (
         <StyleWrapper>
             <div className="listhd">
-                <h4>播放列表(<span className="j-flag">94</span>)</h4>
+                <h4>播放列表(<span className="j-flag">{songList.length}</span>)</h4>
                 <a className="addall" data-action="likeall">
-                    <span className="ico ico-add" />
+                    <i className="icon icon-favor" />
                         收藏全部
                 </a>
                 <Divider type="vertical" />
                 <a className="clear" data-action="clear">
-                    <span className="ico ico-del" />
+                    <i className="icon icon-delete" />
                     清除
                 </a>
 
                 <div className="header-rigth">
-                    <p>11</p>
-                    <span className="close" />
+                    <p>{currentSong?.name}</p>
+                    <span className="close" >x</span>
                 </div>
 
             </div>

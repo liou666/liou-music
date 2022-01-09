@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2022-01-09 17:28:18
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 21:27:26
+ * @LastEditTime: 2022-01-09 21:37:34
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -25,7 +25,6 @@ export default memo(function SongListPanel({ songList, currentSongIndex }) {
                                 <i className="icon-share" />
                                 <i className="icon-download" />
                                 <i className="icon-delete" />
-
                             </div>
                             <span className="songer-name">{x?.ar[0]?.name}</span>
                             <span className="time-total">{moment(x.dt || 0).format("mm:ss")}</span>

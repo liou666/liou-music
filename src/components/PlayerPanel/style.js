@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2022-01-09 16:02:38
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 18:31:47
+ * @LastEditTime: 2022-01-09 21:51:12
  */
 
 import styled from "styled-components"
@@ -26,10 +26,20 @@ export const StyleWrapper = styled.div`
         background: url(${require("@/assets/img/playpanel_bg.png")}) no-repeat  0 0;
         color:#fff;
         display: flex;
-        padding: 0 10px;
+        padding: 0 16px 0 30px;
         align-items: center;
+        a{
+            display: flex;
+            align-items: center;
+        }
+        .icon{
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            margin-right: 8px;
+        }
         h4{
-            margin-right:350px;
+            margin-right:275px;
             color:#fff
         }
         .addall,.clear{
@@ -46,6 +56,11 @@ export const StyleWrapper = styled.div`
                 text-align: center;
                 margin-right: auto;
                 flex: 1;
+            }
+            .close{
+                font-size: large;
+                color: #a4a4a4;
+                cursor: pointer;
             }
         }
     }
