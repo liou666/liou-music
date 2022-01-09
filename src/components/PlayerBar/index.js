@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-26 13:52:21
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 00:33:58
+ * @LastEditTime: 2022-01-09 15:20:46
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -30,10 +30,11 @@ export default memo(() => {
     const [isChangingSlide, setIsChangingSlide] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false)
 
-    const { currentSong, sequence, songList } = useSelector(state => ({
+    const { currentSong, sequence, songList, currentLyric } = useSelector(state => ({
         currentSong: state.player.currentSong,
         sequence: state.player.sequence,
         songList: state.player.songList,
+        currentLyric: state.player.currentLyric,
     }), shallowEqual)
 
     const dispatch = useDispatch()
@@ -60,6 +61,8 @@ export default memo(() => {
         }).catch(err => {
             setIsPlaying(false);
         });
+
+        console.log(currentLyric);
     }, [currentSong.id])
 
 

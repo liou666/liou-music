@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-19 15:20:07
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-31 00:30:47
+ * @LastEditTime: 2022-01-09 21:26:48
  */
 import { memo, Suspense } from "react"
 
@@ -13,6 +13,7 @@ import Footer from "components/Footer";
 import RouteView from "./router";
 
 import PlayerBar from "@/components/PlayerBar"
+import PlayerPanel from "@/components/PlayerPanel";
 
 
 export default memo(function App() {
@@ -24,6 +25,7 @@ export default memo(function App() {
             </Suspense>
             <Footer />
             <PlayerBar />
+            <PlayerPanel />
         </>
     )
 
