@@ -2,7 +2,8 @@ import * as actionTypes from './constants';
 
 import {
     getSongListAll,
-    getSongDetail
+    getSongDetail,
+    getLyric
 } from '@/services/player';
 
 //播放顺序规则
@@ -26,6 +27,11 @@ const changeCurrentIndexAction = (currentSongIndex) => ({
     currentSongIndex
 })
 
+const changeLyricAction = (res) => ({
+    type: actionTypes.CHANGE_CURRENT_LYRIC,
+    currentLyric: res.lrc.lyric
+})
+
 
 //直接从songList，currentSongIndex中取，不需要网络请求
 // //更新当前播放的音乐
@@ -43,6 +49,8 @@ export const getSongListAction = (id) => {
         getSongListAll(id).then(res => {
             dispatch(changeSongListAction(res.songs));
             dispatch(changeCurrentSongAction(res.songs[0]));
+            dispatch(getLyricAction(res.songs[0].id))
+
         })
     }
 };
@@ -53,16 +61,20 @@ export const addSongFromListAction = (id) => {
         const { player: { songList } } = getState();
 
         const index = songList.findIndex(x => x.id === id)
-        
+
         if (index > 0) {
             dispatch(changeCurrentIndexAction(index))
             dispatch(changeCurrentSongAction(songList[index]))
+            dispatch(getLyricAction(songList[index].id))
+
         } else {
             getSongDetail(id).then(res => {
                 const newSongList = [...songList, res.songs[0]]
                 dispatch(changeSongListAction(newSongList))
                 dispatch(changeCurrentIndexAction(newSongList.length - 1))
                 dispatch(changeCurrentSongAction(res.songs[0]))
+                dispatch(getLyricAction(res.songs[0].id))
+
             })
         }
 
@@ -82,6 +94,8 @@ export const deleteSongFromListAction = (index) => {
         dispatch(changeSongListAction(newSongList));
         dispatch(changeCurrentIndexAction(i))
         dispatch(changeCurrentSongAction(newSongList(i)))
+        dispatch(getLyricAction(newSongList(i).id))
+
     }
 }
 
@@ -102,11 +116,15 @@ export const getNextSongAction = () => {
                 newIndex = currentSongIndex + 1 === length ? 0 : currentSongIndex + 1
                 dispatch(changeCurrentIndexAction(newIndex))
                 dispatch(changeCurrentSongAction(songList[newIndex]))
+                dispatch(getLyricAction(songList[newIndex].id))
+
                 break
             case 1:
                 newIndex = getRandomIndex(length)
                 dispatch(changeCurrentIndexAction(newIndex))
                 dispatch(changeCurrentSongAction(songList[newIndex]))
+                dispatch(getLyricAction(songList[newIndex].id))
+
                 break
             default:
                 break
@@ -128,12 +146,13 @@ export const getPrevSongAction = () => {
                 newIndex = currentSongIndex - 1 === -1 ? length - 1 : currentSongIndex - 1
                 dispatch(changeCurrentIndexAction(newIndex))
                 dispatch(changeCurrentSongAction(songList[newIndex]))
-
+                dispatch(getLyricAction(songList[newIndex].id))
                 break
             case 1:
                 newIndex = getRandomIndex(length)
                 dispatch(changeCurrentIndexAction(newIndex))
                 dispatch(changeCurrentSongAction(songList[newIndex]))
+                dispatch(getLyricAction(songList[newIndex].id))
 
                 break
             default:
@@ -142,6 +161,14 @@ export const getPrevSongAction = () => {
     }
 }
 
+//获取歌词
+const getLyricAction = (id) => {
+    return dispatch => {
+        getLyric(id).then(res => {
+            dispatch(changeLyricAction(res))
+        })
+    }
+}
 
 
 const getRandomIndex = (length) => {

@@ -3,6 +3,7 @@ import * as actionTypes from './constants';
 const defaultState = {
   currentSong: {},
   songList: [],
+  currentLyric: '',
   sequence: 0, // 0 循环 1 随机 2 单曲,
   currentSongIndex: 0
 }
@@ -18,7 +19,8 @@ export function reducer(state = defaultState, action) {
       return { ...state, sequence: action.sequence }
     case actionTypes.CHANGE_SONG_LIST:
       return { ...state, songList: action.songList }
-
+    case actionTypes.CHANGE_CURRENT_LYRIC:
+      return { ...state, currentLyric: action.currentLyric }
     default:
       return state
   }
