@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-25 13:03:53
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-25 13:06:03
+ * @LastEditTime: 2022-01-09 01:41:39
  */
 import axios from "axios";
 
@@ -13,10 +13,13 @@ const TIME_OUT = 6000
 
 const instance = axios.create({
     baseURL: BASE_URL,
-    timeout: TIME_OUT
+    timeout: TIME_OUT,
+    withCredentials: true
 })
 
 instance.interceptors.request.use((config) => {
+
+    // config.params.cookie=""
     //请求头携带token，loading操作
     return config
 })
