@@ -34,3 +34,31 @@ a:hover {
     width: 982px;
     margin: 0 auto;
 }
+
+/* 
+.playlist-sprite {
+    background: url("../img/playlist_sprite.png") no-repeat -9999 -9999;
+} */
+
+.icon-share {
+    background: url("../img/playlist_sprite.png") no-repeat 0 0
+}
+
+.icon-download {
+    background: url("../img/playlist_sprite.png") no-repeat -57px -50px;
+}
+
+.icon-delete {
+    background: url("../img/playlist_sprite.png") no-repeat -51px 0;
+}
+
+/* .icon-enshrine {} */
+
+.icon-favor {
+    background: url("../img/playlist_sprite.png") no-repeat -24px 0;
+    /* background-position: ; */
+}
+
+.icon-link {
+    background: url("../img/playlist_sprite.png") no-repeat -80px 3px;
+}
