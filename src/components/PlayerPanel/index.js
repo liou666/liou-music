@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2022-01-09 01:22:04
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 22:55:42
+ * @LastEditTime: 2022-01-12 23:28:27
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -27,11 +27,12 @@ import { parseLyric } from "../../utils/index"
 
 
 export default memo(function PlayerPanel() {
-    const { songList, currentLyric, currentSongIndex, currentSong } = useSelector(state => ({
+    const { songList, currentLyric, currentSongIndex, currentSong, lyricIndex } = useSelector(state => ({
         songList: state.player.songList,
         currentLyric: state.player.currentLyric,
         currentSongIndex: state.player.currentSongIndex,
-        currentSong: state.player.currentSong
+        currentSong: state.player.currentSong,
+        lyricIndex: state.player.lyricIndex
     }), shallowEqual)
 
     // const dispatch = useDispatch()
@@ -62,7 +63,7 @@ export default memo(function PlayerPanel() {
                     <SongListPanel songList={songList} currentSongIndex={currentSongIndex} />
                 </div>
                 <div className="lyric-panel">
-                    <LyricPanel lyric={parseLyric(currentLyric)} />
+                    {currentLyric && <LyricPanel lyricIndex={lyricIndex} lyric={currentLyric} />}
                 </div>
             </div>
 

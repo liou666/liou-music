@@ -6,6 +6,8 @@ import {
     getLyric
 } from '@/services/player';
 
+import { parseLyric } from "../../../utils/index"
+
 //播放顺序规则
 export const changeSequenceAction = (sequence) => ({
     type: actionTypes.CHANGE_SEQUENCE,
@@ -29,8 +31,14 @@ const changeCurrentIndexAction = (currentSongIndex) => ({
 
 const changeLyricAction = (res) => ({
     type: actionTypes.CHANGE_CURRENT_LYRIC,
-    currentLyric: res.lrc.lyric
+    currentLyric: parseLyric(res.lrc.lyric)
 })
+
+//歌词滚动
+export const changeLyricIndexAction = (lyricIndex) => ({
+    type: actionTypes.CHANGE_LYRIC_INDEX,
+    lyricIndex
+});
 
 
 //直接从songList，currentSongIndex中取，不需要网络请求
@@ -169,6 +177,7 @@ const getLyricAction = (id) => {
         })
     }
 }
+
 
 
 const getRandomIndex = (length) => {

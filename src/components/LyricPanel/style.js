@@ -3,16 +3,17 @@
  * @Autor: Liou
  * @Date: 2022-01-09 22:50:53
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 23:39:42
+ * @LastEditTime: 2022-01-13 00:35:52
  */
 import styled from "styled-components"
 
 export const StyleWrapper = styled.div`
     overflow: auto;
-    width: 100%;
     height: 100%;
+    width: 100%;
     font-size: 12px;
-    padding: 20px 0 !important;
+    /* margin: 21px auto 20px ; */
+    padding: 20px  !important;
     ::-webkit-scrollbar-track-piece {
          //滚动条凹槽的颜色，还可以设置边框属性
           background-color:#0b0c0c; 
@@ -42,5 +43,9 @@ export const StyleWrapper = styled.div`
        }
         
     }
+    .lyric-container{
+        padding: 20px;
+    }
    
+  
 `

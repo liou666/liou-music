@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-26 13:52:21
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 15:20:46
+ * @LastEditTime: 2022-01-12 23:31:32
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -12,7 +12,8 @@ import {
     getSongListAction,
     changeSequenceAction,
     getNextSongAction,
-    getPrevSongAction
+    getPrevSongAction,
+    changeLyricIndexAction
 } from "./store/actionCreator"
 
 // import { getSongUrl } from "../../services/player"
@@ -67,11 +68,30 @@ export default memo(() => {
 
 
     const timeUpdate = (e) => {
-        const { currentTime } = e.target
+        const { currentTime } = e.target;
         if (!isChangingSlide) {
             setProgress((currentTime * 1000 / duration * 100) | 0)
             setCurrentTime(currentTime * 1000)
+        };
+
+        const targetIndex = getLyricIndex(currentTime, currentLyric)
+
+
+        dispatch(changeLyricIndexAction(targetIndex))
+    }
+
+    const getLyricIndex = (currentTime, currentLyric) => {
+        let targetIndex = 0;
+        let flag = false;
+        for (let i = 0; i < currentLyric.length; i++) {
+            if (currentTime <= currentLyric[i].time) {
+                flag = true
+                targetIndex = i - 1;
+                break
+            }
         }
+        !flag && (targetIndex = currentLyric.length - 1)
+        return targetIndex
     }
 
     const slideChange = useCallback((value) => {

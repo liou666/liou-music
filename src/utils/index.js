@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2022-01-09 15:23:06
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 15:56:27
+ * @LastEditTime: 2022-01-10 00:01:54
  */
 // [00:14.00]Tossing turning
 // [00:17.00]Up all night fire burning
@@ -16,7 +16,8 @@
 export const parseLyric = (lyric) => {
     return [...lyric.matchAll(/\[(.+)(\..+)\](.+)/g)].reduce((pre, cur) => {
         let obj = {};
-        obj.time = cur[1];
+        const temp = cur[1].split(":");
+        obj.time = temp[0] * 60 + +temp[1]
         obj.lyric = cur[3];
         pre.push(obj);
         return pre
