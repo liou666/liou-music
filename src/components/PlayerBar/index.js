@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-26 13:52:21
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-15 15:17:24
+ * @LastEditTime: 2022-01-15 15:25:02
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -65,7 +65,6 @@ export default memo(() => {
             setIsPlaying(false);
         });
 
-        console.log(currentLyric);
     }, [currentSong.id])
 
 

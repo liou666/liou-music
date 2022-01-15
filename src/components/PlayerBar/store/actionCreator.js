@@ -120,14 +120,12 @@ export const getNextSongAction = () => {
         // 0 循环 1 随机 2 单曲,
 
         const { player: { songList, currentSongIndex, sequence } } = getState();
-        console.log(getState(), songList, sequence);
         const length = songList.length;
         let newIndex;
 
         switch (sequence) {
             case 0:
             case 2:
-                console.log("ss");
                 newIndex = currentSongIndex + 1 === length ? 0 : currentSongIndex + 1
                 dispatch(changeCurrentIndexAction(newIndex))
                 dispatch(changeCurrentSongAction(songList[newIndex]))
