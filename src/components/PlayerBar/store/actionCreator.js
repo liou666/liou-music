@@ -41,6 +41,13 @@ export const changeLyricIndexAction = (lyricIndex) => ({
 });
 
 
+export const changeIsShowPanelAction = (isShowPanel) => ({
+    type: actionTypes.CHANGE_IS_SHOW_PANEL,
+    isShowPanel
+});
+
+
+
 //直接从songList，currentSongIndex中取，不需要网络请求
 // //更新当前播放的音乐
 // export const getCurrentSongAction = (ids) => {

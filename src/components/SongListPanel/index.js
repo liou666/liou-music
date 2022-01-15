@@ -3,21 +3,26 @@
  * @Autor: Liou
  * @Date: 2022-01-09 17:28:18
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 21:37:34
+ * @LastEditTime: 2022-01-15 15:02:14
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
 
 import moment from "moment"
 
+import { addSongFromListAction } from "../PlayerBar/store/actionCreator"
+
 import { StyleWrapper } from "./style"
 
 export default memo(function SongListPanel({ songList, currentSongIndex }) {
+
+    const dispatch = useDispatch()
+
     return (
         <StyleWrapper>
             {songList.map((x, i) => {
                 return (
-                    <li key={x.id} className={i === currentSongIndex ? 'active' : ''}>
+                    <li onClick={() => dispatch(addSongFromListAction(x.id))} key={x.id} className={i === currentSongIndex ? 'active' : ''}>
                         <div className="left">{x?.name}</div>
                         <div className="right">
                             <div className="options">

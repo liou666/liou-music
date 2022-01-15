@@ -3,18 +3,13 @@
  * @Autor: Liou
  * @Date: 2022-01-09 01:22:04
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-12 23:28:27
+ * @LastEditTime: 2022-01-15 14:52:06
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
 
 
-// import {
-//     getSongListAction,
-//     changeSequenceAction,
-//     getNextSongAction,
-//     getPrevSongAction
-// } from "/store/actionCreator"
+import { changeIsShowPanelAction } from "../PlayerBar/store/actionCreator"
 
 import SongListPanel from "../SongListPanel"
 import LyricPanel from "../LyricPanel"
@@ -27,18 +22,21 @@ import { parseLyric } from "../../utils/index"
 
 
 export default memo(function PlayerPanel() {
-    const { songList, currentLyric, currentSongIndex, currentSong, lyricIndex } = useSelector(state => ({
+
+
+    const { songList, currentLyric, currentSongIndex, currentSong, lyricIndex, isShowPanel } = useSelector(state => ({
         songList: state.player.songList,
         currentLyric: state.player.currentLyric,
         currentSongIndex: state.player.currentSongIndex,
         currentSong: state.player.currentSong,
-        lyricIndex: state.player.lyricIndex
+        lyricIndex: state.player.lyricIndex,
+        isShowPanel: state.player.isShowPanel
     }), shallowEqual)
 
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     return (
-        <StyleWrapper>
+        <StyleWrapper isShowPanel={isShowPanel}>
             <div className="listhd">
                 <h4>播放列表(<span className="j-flag">{songList.length}</span>)</h4>
                 <a className="addall" data-action="likeall">
@@ -53,7 +51,7 @@ export default memo(function PlayerPanel() {
 
                 <div className="header-rigth">
                     <p>{currentSong?.name}</p>
-                    <span className="close" >x</span>
+                    <span onClick={() => dispatch(changeIsShowPanelAction(false))} className="close" >x</span>
                 </div>
 
             </div>

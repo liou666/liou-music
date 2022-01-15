@@ -6,7 +6,8 @@ const defaultState = {
   currentLyric: '',
   lyricIndex: -1,
   sequence: 0, // 0 循环 1 随机 2 单曲,
-  currentSongIndex: 0
+  currentSongIndex: 0,
+  isShowPanel: false
 }
 
 
@@ -24,7 +25,8 @@ export function reducer(state = defaultState, action) {
       return { ...state, currentLyric: action.currentLyric }
     case actionTypes.CHANGE_LYRIC_INDEX:
       return { ...state, lyricIndex: action.lyricIndex }
-
+    case actionTypes.CHANGE_IS_SHOW_PANEL:
+      return { ...state, isShowPanel: action.isShowPanel }
     default:
       return state
   }

@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-26 13:52:21
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-12 23:31:32
+ * @LastEditTime: 2022-01-15 14:46:08
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -13,7 +13,8 @@ import {
     changeSequenceAction,
     getNextSongAction,
     getPrevSongAction,
-    changeLyricIndexAction
+    changeLyricIndexAction,
+    changeIsShowPanelAction
 } from "./store/actionCreator"
 
 // import { getSongUrl } from "../../services/player"
@@ -31,11 +32,12 @@ export default memo(() => {
     const [isChangingSlide, setIsChangingSlide] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false)
 
-    const { currentSong, sequence, songList, currentLyric } = useSelector(state => ({
+    const { currentSong, sequence, songList, currentLyric, isShowPanel } = useSelector(state => ({
         currentSong: state.player.currentSong,
         sequence: state.player.sequence,
         songList: state.player.songList,
         currentLyric: state.player.currentLyric,
+        isShowPanel: state.player.isShowPanel
     }), shallowEqual)
 
     const dispatch = useDispatch()
@@ -172,7 +174,7 @@ export default memo(() => {
                     <div className="right playbar_sprite">
                         <button className="playbar_sprite btn volume"></button>
                         <button onClick={() => changeSequence()} className=" playbar_sprite btn loop"></button>
-                        <button className="playbar_sprite btn playlist">{songList?.length}</button>
+                        <button onClick={() => dispatch(changeIsShowPanelAction(!isShowPanel))} className="playbar_sprite btn playlist">{songList?.length}</button>
                     </div>
 
                 </div>

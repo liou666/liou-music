@@ -3,12 +3,13 @@
  * @Autor: Liou
  * @Date: 2022-01-09 16:02:38
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-09 23:35:20
+ * @LastEditTime: 2022-01-15 14:57:22
  */
 
 import styled from "styled-components"
 
 export const StyleWrapper = styled.div`
+    display: ${props => { return props.isShowPanel ? "unset" : "none" }};
     position: fixed;
     left: 50%;
     bottom: 47px;
