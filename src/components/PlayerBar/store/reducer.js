@@ -1,8 +1,10 @@
 import * as actionTypes from './constants';
 
+import { mockSongList } from "@/common/mockData"
+
 const defaultState = {
-  currentSong: {},
-  songList: [],
+  currentSong: mockSongList[0] || {},//先使用假数据
+  songList: mockSongList || [],//先使用假数据
   currentLyric: '',
   lyricIndex: -1,
   sequence: 0, // 0 循环 1 随机 2 单曲,

@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-26 13:52:21
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-15 15:25:02
+ * @LastEditTime: 2022-01-15 16:18:52
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -41,9 +41,13 @@ export default memo(() => {
     }), shallowEqual)
 
     const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getSongListAction(24381616))
-    }, [dispatch])
+
+    //先使用假数据
+    // useEffect(() => {
+    //     dispatch(getSongListAction(24381616))
+    // }, [dispatch])
+
+    
 
     //字段解析
     const picUrl = (currentSong.al && currentSong.al.picUrl) || "";
