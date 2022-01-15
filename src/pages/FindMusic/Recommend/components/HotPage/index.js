@@ -3,12 +3,13 @@
  * @Autor: Liou
  * @Date: 2021-12-26 13:47:44
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-26 17:38:07
+ * @LastEditTime: 2022-01-15 15:07:26
  */
 import { memo, useEffect, useState, useCallback, useRef } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
 
 import { getHotRecommendsAction } from "../../store/actionCreator"
+import { getSongListAction } from "../../../../../components/PlayerBar/store/actionCreator"
 
 import { HotPageWrap } from "./style"
 import ThemeHeader from "components/ThemeHeader"
@@ -50,7 +51,7 @@ export default memo(() => {
                                 <div className="info-bar">
                                     <i className="sprite_icon erji"></i>
                                     <span>{getCount(item.playCount)}</span>
-                                    <a className="redio-btn sprite_icon "></a>
+                                    <a onClick={() => { dispatch(getSongListAction(item.id)) }} className="redio-btn sprite_icon "></a>
                                 </div>
                             </div>
                             <div className="record-title">{item.name}</div>

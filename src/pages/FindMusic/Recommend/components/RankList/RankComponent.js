@@ -3,16 +3,16 @@
  * @Autor: Liou
  * @Date: 2021-12-27 23:46:41
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-08 17:19:37
+ * @LastEditTime: 2022-01-15 15:18:14
  */
 import { memo, useEffect, useState, useCallback, useRef } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
 
 import { ComponentWrap } from "./style"
 
-import { getSongListAction, addSongFromListAction } from "../../../../../components/PlayerBar/store/actionCreator"
+import { getSongListAction, addSongFromListAction } from "components/PlayerBar/store/actionCreator"
 
-
+import { getSizeImage } from "@/utils"
 
 export default memo((props) => {
 
@@ -27,7 +27,7 @@ export default memo((props) => {
         <ComponentWrap width={width}>
             <header>
                 <div className="header-image">
-                    <img src={coverImgUrl}></img>
+                    <img src={getSizeImage(coverImgUrl, 80)}></img>
                 </div>
                 <div className="right">
                     <span>{name}</span>

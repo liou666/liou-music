@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2022-01-09 15:23:06
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-10 00:01:54
+ * @LastEditTime: 2022-01-15 15:13:24
  */
 // [00:14.00]Tossing turning
 // [00:17.00]Up all night fire burning
@@ -23,4 +23,9 @@ export const parseLyric = (lyric) => {
         return pre
     }, [])
 }
+
+export function getSizeImage(imgUrl, size) {
+    return `${imgUrl}?param=${size}x${size}`;
+}
+
 

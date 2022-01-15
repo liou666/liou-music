@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-29 23:57:20
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-30 01:59:22
+ * @LastEditTime: 2022-01-15 15:19:50
  */
 import { memo, useEffect, useState, useCallback, useRef } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -11,6 +11,7 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux"
 import { getNewSongerAction } from "../../store/actionCreator"
 
 import styled from "styled-components"
+import { getSizeImage } from "@/utils"
 
 const StyleWrap = styled.div`
     padding: 20px;
@@ -96,7 +97,7 @@ export default memo(function HotHost() {
                 {newSonger.map(item => {
                     return (
                         <li key={item.id} className="songer-item">
-                            <img src={item.picUrl} />
+                            <img src={getSizeImage(item.picUrl, 60)} />
                             <div className="detail-info">
                                 <p>{item.name}</p>
                                 <span>{item.alias.join("/")}</span>

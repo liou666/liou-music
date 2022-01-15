@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-26 13:49:23
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-26 20:17:00
+ * @LastEditTime: 2022-01-15 15:14:23
  */
 import { memo, useEffect, useState, useCallback, useRef } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -14,7 +14,7 @@ import { Carousel } from "antd"
 import { NewDiscWrap } from "./style"
 
 import { getNewAlbumsAction } from "../../store/actionCreator"
-
+import { getSizeImage } from "@/utils"
 
 export default memo(() => {
     const { newAlbums } = useSelector(state => ({
@@ -40,7 +40,7 @@ export default memo(() => {
                                     return (
                                         <div key={y.id} className="album-item">
                                             <div className="album-image">
-                                                <img src={y.picUrl} />
+                                                <img src={getSizeImage(y.picUrl, 100)} />
                                                 <a className="cover image_cover">{y.name}</a>
                                             </div>
                                             <div className="text-info">

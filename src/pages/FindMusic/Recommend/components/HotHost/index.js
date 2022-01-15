@@ -3,13 +3,14 @@
  * @Autor: Liou
  * @Date: 2021-12-29 23:58:46
  * @LastEditors: Liou
- * @LastEditTime: 2021-12-30 02:00:17
+ * @LastEditTime: 2022-01-15 15:21:15
  */
 import { memo, useEffect, useState, useCallback, useRef } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
 import { getHotHostAction } from "../../store/actionCreator"
 
 import styled from "styled-components"
+import { getSizeImage } from "@/utils"
 
 const StyleWrap = styled.div`
     padding: 20px;
@@ -84,7 +85,7 @@ export default memo(function HotHost() {
                 {hotHost.slice(0, 5).map(item => {
                     return (
                         <li key={item.id} className="host-item">
-                            <img src={item.picUrl} />
+                            <img src={getSizeImage(item.picUrl, 40)} />
                             <div className="detail-info">
                                 <p>{item.name}</p>
                                 <span>{item.rcmdtext}</span>

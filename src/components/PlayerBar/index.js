@@ -3,7 +3,7 @@
  * @Autor: Liou
  * @Date: 2021-12-26 13:52:21
  * @LastEditors: Liou
- * @LastEditTime: 2022-01-15 14:46:08
+ * @LastEditTime: 2022-01-15 15:17:24
  */
 import react, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
@@ -22,7 +22,7 @@ import moment from "moment"
 import { Slider } from 'antd';
 import { StyleWrap } from "./style"
 
-
+import { getSizeImage } from "@/utils"
 
 
 export default memo(() => {
@@ -151,7 +151,7 @@ export default memo(() => {
                     <i className="next" onClick={() => goNextSong()} />
                 </div>
                 <div className="player-bar">
-                    <img src={picUrl}></img>
+                    <img src={getSizeImage(picUrl, 50)}></img>
                     <div className="player-other">
                         <div className="player-info">
                             <span className="song">{currentSong?.name}</span>
